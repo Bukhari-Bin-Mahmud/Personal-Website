@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
@@ -18,77 +17,78 @@ const posts = (await getCollection('blog')).sort(
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
 			main {
-				width: 960px;
+				max-width: 720px;
+				margin: 0 auto;
 			}
 			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
 				list-style-type: none;
 				margin: 0;
 				padding: 0;
+				display: flex;
+				flex-direction: column;
+				gap: 4rem;
 			}
-			ul li {
-				width: calc(50% - 1rem);
+			li {
+				display: flex;
+				flex-direction: column;
 			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
+			.arrow {
+				font-family: monospace;
+				color: var(--text-muted);
 				margin-bottom: 0.5rem;
-				border-radius: 12px;
+				font-size: 1.1rem;
 			}
-			ul li a {
+			a {
+				text-decoration: none;
 				display: block;
 			}
 			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
+				font-family: 'Inter', sans-serif;
+				font-weight: 800;
+				font-size: 1.8rem;
+				margin: 0 0 0.5rem 0;
+				color: var(--text-color);
+				line-height: 1.2;
+				transition: color 0.2s ease;
+				letter-spacing: -0.02em;
 			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
+			a:hover .title {
+				color: var(--accent);
+			}
+			.meta {
+				margin: 0 0 1rem 0;
+				color: var(--text-muted);
+				font-size: 0.9em;
+			}
+			.tags {
+				display: flex;
+				gap: 0.5rem;
+				flex-wrap: wrap;
+				margin-bottom: 1rem;
+			}
+			.tag {
+				border: 1px solid var(--border-color);
+				border-radius: 9999px;
+				padding: 0.2rem 0.6rem;
+				font-size: 0.75rem;
+				color: var(--text-muted);
+				background: transparent;
 			}
 			.description {
-				margin: 0.5rem 0 0 0;
-				color: var(--text-color);
-				font-size: 0.9em;
-				line-height: 1.5;
-				opacity: 0.85;
+				margin: 0;
+				padding-left: 1rem;
+				border-left: 2px solid var(--border-color);
+				color: var(--text-muted);
+				font-size: 0.95rem;
+				line-height: 1.6;
 			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
+			
 			@media (max-width: 720px) {
+				.title {
+					font-size: 1.5rem;
+				}
 				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
+					gap: 3rem;
 				}
 			}
 		</style>
@@ -99,20 +99,31 @@ const posts = (await getCollection('blog')).sort(
 			<section>
 				<ul>
 					{
-						posts.map((post) => (
+						posts.map((post) => {
+							const wordCount = post.body ? post.body.split(/\s+/).length : 0;
+							const readTime = Math.max(1, Math.ceil(wordCount / 200));
+
+							return (
 							<li>
+								<span class="arrow">&rarr;</span>
 								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-									{post.data.description && <p class="description">{post.data.description}</p>}
+									<h3 class="title">{post.data.title}</h3>
 								</a>
+								<div class="meta">
+									<FormattedDate date={post.data.pubDate} /> &middot; {readTime} min
+								</div>
+								{post.data.tags && post.data.tags.length > 0 && (
+									<div class="tags">
+										{post.data.tags.map(tag => <span class="tag">{tag}</span>)}
+									</div>
+								)}
+								{post.data.description && (
+									<div class="description">
+										{post.data.description}
+									</div>
+								)}
 							</li>
-						))
+						)})
 					}
 				</ul>
 			</section>
