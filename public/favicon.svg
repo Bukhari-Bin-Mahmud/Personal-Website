@@ -1,35 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <!-- Glowing orange gradient -->
-    <linearGradient id="neon" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- Vibrant, high-contrast neon orange gradient -->
+    <linearGradient id="neonFill" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#fb923c" />
       <stop offset="100%" stop-color="#ea580c" />
     </linearGradient>
-
-    <!-- Crisp, solid dark shadow for that 3D pop -->
-    <filter id="crispShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feFlood flood-color="#1a1815" flood-opacity="1" result="shadowColor" />
-      <feComposite in="shadowColor" in2="SourceAlpha" operator="in" result="shadow" />
-      <feComponentTransfer in="shadow" result="solidShadow">
-        <feFuncA type="linear" slope="100"/>
-      </feComponentTransfer>
-      <feOffset dx="3" dy="3" in="solidShadow" result="offsetShadow" />
-      <feMerge>
-        <feMergeNode in="offsetShadow" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
-
-    <!-- Mask to carve out the inner line, creating a hollow isometric ribbon -->
-    <mask id="hollow">
-      <rect x="0" y="0" width="100" height="100" fill="white" />
-      <path d="M 34,88 L 34,12 L 50,22 L 50,48 L 74,63 L 74,79 L 50,94 L 18,74" 
-            fill="none" stroke="black" stroke-width="5" stroke-linejoin="miter" stroke-linecap="butt" />
-    </mask>
   </defs>
-  
-  <!-- Main hollow geometric B shape -->
-  <path d="M 34,88 L 34,12 L 50,22 L 50,48 L 74,63 L 74,79 L 50,94 L 18,74" 
-        fill="none" stroke="url(#neon)" stroke-width="14" stroke-linejoin="miter" stroke-linecap="square" 
-        mask="url(#hollow)" filter="url(#crispShadow)" />
+
+  <!-- Transform to perfectly center and scale the logo, leaving room for the thick outline -->
+  <g transform="translate(5, 7.25) scale(0.9)" 
+     fill="url(#neonFill)" 
+     stroke="#1a1815" 
+     stroke-width="6" 
+     stroke-linejoin="round" 
+     stroke-linecap="round">
+     
+    <!-- Top Parallelogram -->
+    <polygon points="17.5,35 27.5,25 27.5,0 17.5,10" />
+    
+    <!-- Main Sweeping 'b' Shape -->
+    <path d="M 17.5 60 
+             L 17.5 45 
+             L 27.5 35 
+             L 52.5 35 
+             A 30 30 0 0 1 52.5 95 
+             L 17.5 95 
+             L 27.5 85 
+             L 52.5 85 
+             A 20 20 0 0 0 52.5 45 
+             L 27.5 45 
+             L 17.5 55 
+             Z" />
+  </g>
 </svg>
