@@ -1,35 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <!-- Vibrant, high-contrast neon orange gradient -->
+    <!-- Vibrant orange gradient -->
     <linearGradient id="neonFill" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#fb923c" />
       <stop offset="100%" stop-color="#ea580c" />
     </linearGradient>
+
+    <!-- Base sword design -->
+    <g id="sword">
+      <!-- Blade -->
+      <path d="M42,20 L50,5 L58,20 L58,70 L42,70 Z" />
+      <!-- Crossguard -->
+      <rect x="22" y="70" width="56" height="8" rx="3" />
+      <!-- Handle -->
+      <rect x="42" y="78" width="16" height="16" />
+      <!-- Pommel -->
+      <circle cx="50" cy="95" r="7" />
+    </g>
   </defs>
 
-  <!-- Transform to perfectly center and scale the logo, leaving room for the thick outline -->
-  <g transform="translate(5, 7.25) scale(0.9)" 
-     fill="url(#neonFill)" 
-     stroke="#1a1815" 
-     stroke-width="6" 
-     stroke-linejoin="round" 
-     stroke-linecap="round">
-     
-    <!-- Top Parallelogram -->
-    <polygon points="17.5,35 27.5,25 27.5,0 17.5,10" />
+  <!-- Scale and center the crossed swords perfectly in the view box -->
+  <g transform="translate(50,50) scale(1.3) translate(-50,-50)">
     
-    <!-- Main Sweeping 'b' Shape -->
-    <path d="M 17.5 60 
-             L 17.5 45 
-             L 27.5 35 
-             L 52.5 35 
-             A 30 30 0 0 1 52.5 95 
-             L 17.5 95 
-             L 27.5 85 
-             L 52.5 85 
-             A 20 20 0 0 0 52.5 45 
-             L 27.5 45 
-             L 17.5 55 
-             Z" />
+    <!-- Crossed swords with thick dark outline -->
+    <g stroke="#1a1815" stroke-width="4" stroke-linejoin="round" fill="url(#neonFill)">
+      <use href="#sword" transform="rotate(45 50 50)" />
+      <use href="#sword" transform="rotate(-45 50 50)" />
+    </g>
+    
+    <!-- Blood grooves (fullers) for extra crispy detail -->
+    <g fill="#1a1815">
+      <rect x="48.5" y="25" width="3" height="42" rx="1.5" transform="rotate(45 50 50)" />
+      <rect x="48.5" y="25" width="3" height="42" rx="1.5" transform="rotate(-45 50 50)" />
+    </g>
   </g>
 </svg>
