@@ -182,7 +182,6 @@ nav {
 }
 
 .retro-list-item:hover {
-	transform: translateX(5px) translateY(-2px);
 	border-color: var(--accent);
 	box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
