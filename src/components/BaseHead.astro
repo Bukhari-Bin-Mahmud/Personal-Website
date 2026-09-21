@@ -41,6 +41,8 @@ const { title, description, image = FallbackImage } = Astro.props;
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="description" content={description} />
+<meta name="keywords" content="Bukhari Bin Mahmud, Software Engineer, Computer Science, Developer, Portfolio, AI" />
+<meta name="author" content="Bukhari Bin Mahmud" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -51,6 +53,22 @@ const { title, description, image = FallbackImage } = Astro.props;
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={Astro.url} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image.src, Astro.url)} />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Bukhari Bin Mahmud",
+		"url": "https://bukharibinmahmud.vercel.app",
+		"jobTitle": "Software Engineer",
+		"description": "Computer Science student and developer"
+	}
+</script>
 
 <script is:inline>
 	const theme = (() => {
