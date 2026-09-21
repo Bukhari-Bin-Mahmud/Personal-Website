@@ -1,22 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <!-- A stunning, fiery sunset gradient -->
-    <linearGradient id="sunset" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f59e0b" /> <!-- Golden yellow -->
-      <stop offset="50%" stop-color="#ea580c" /> <!-- Vibrant orange -->
-      <stop offset="100%" stop-color="#be123c" /> <!-- Deep rose -->
+    <!-- Glowing orange gradient -->
+    <linearGradient id="neon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c" />
+      <stop offset="100%" stop-color="#ea580c" />
     </linearGradient>
+
+    <!-- Crisp, solid dark shadow for that 3D pop -->
+    <filter id="crispShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feFlood flood-color="#1a1815" flood-opacity="1" result="shadowColor" />
+      <feComposite in="shadowColor" in2="SourceAlpha" operator="in" result="shadow" />
+      <feComponentTransfer in="shadow" result="solidShadow">
+        <feFuncA type="linear" slope="100"/>
+      </feComponentTransfer>
+      <feOffset dx="3" dy="3" in="solidShadow" result="offsetShadow" />
+      <feMerge>
+        <feMergeNode in="offsetShadow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Mask to carve out the inner line, creating a hollow isometric ribbon -->
+    <mask id="hollow">
+      <rect x="0" y="0" width="100" height="100" fill="white" />
+      <path d="M 34,88 L 34,12 L 50,22 L 50,48 L 74,63 L 74,79 L 50,94 L 18,74" 
+            fill="none" stroke="black" stroke-width="5" stroke-linejoin="miter" stroke-linecap="butt" />
+    </mask>
   </defs>
   
-  <!-- Disconnected, highly abstract stencil lines -->
-  <g fill="none" stroke="url(#sunset)" stroke-width="16" stroke-linecap="round">
-    <!-- The vertical stem -->
-    <line x1="24" y1="15" x2="24" y2="85" />
-    
-    <!-- The top loop -->
-    <path d="M 44,15 C 80,15 80,40 44,40" />
-    
-    <!-- The bottom loop (slightly wider) -->
-    <path d="M 44,60 C 92,60 92,85 44,85" />
-  </g>
+  <!-- Main hollow geometric B shape -->
+  <path d="M 34,88 L 34,12 L 50,22 L 50,48 L 74,63 L 74,79 L 50,94 L 18,74" 
+        fill="none" stroke="url(#neon)" stroke-width="14" stroke-linejoin="miter" stroke-linecap="square" 
+        mask="url(#hollow)" filter="url(#crispShadow)" />
 </svg>
