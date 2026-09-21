@@ -1,47 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <!-- Crisp, solid dark drop-shadow filter -->
-    <filter id="crispShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feFlood flood-color="#1a1815" flood-opacity="1" result="shadowColor" />
-      <feComposite in="shadowColor" in2="SourceAlpha" operator="in" result="shadow" />
-      <!-- Force the shadow to be completely solid (100% opacity) -->
-      <feComponentTransfer in="shadow" result="solidShadow">
-        <feFuncA type="linear" slope="100"/>
-      </feComponentTransfer>
-      <feOffset dx="4" dy="4" in="solidShadow" result="offsetShadow" />
-      <feMerge>
-        <feMergeNode in="offsetShadow" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
-
-    <!-- Mask for perfect transparent cutouts -->
-    <mask id="holes">
-      <rect x="0" y="0" width="100" height="100" fill="white" />
-      <circle cx="55" cy="35" r="8" fill="black" />
-      <circle cx="60" cy="65" r="10" fill="black" />
-    </mask>
-    
-    <!-- Vibrant gradients -->
-    <linearGradient id="gradOrange" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#ff7e5f" />
-      <stop offset="100%" stop-color="#ea580c" />
-    </linearGradient>
-    
-    <linearGradient id="gradPink" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f43f5e" />
-      <stop offset="100%" stop-color="#9f1239" />
-    </linearGradient>
-    
-    <linearGradient id="gradGold" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#f59e0b" />
-      <stop offset="100%" stop-color="#fde047" />
+    <!-- A stunning, fiery sunset gradient -->
+    <linearGradient id="sunset" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" /> <!-- Golden yellow -->
+      <stop offset="50%" stop-color="#ea580c" /> <!-- Vibrant orange -->
+      <stop offset="100%" stop-color="#be123c" /> <!-- Deep rose -->
     </linearGradient>
   </defs>
   
-  <g mask="url(#holes)" filter="url(#crispShadow)">
-    <circle cx="55" cy="35" r="22" fill="url(#gradPink)" opacity="0.9" />
-    <circle cx="60" cy="65" r="26" fill="url(#gradGold)" opacity="0.9" />
-    <rect x="25" y="15" width="20" height="70" rx="10" fill="url(#gradOrange)" />
+  <!-- Disconnected, highly abstract stencil lines -->
+  <g fill="none" stroke="url(#sunset)" stroke-width="16" stroke-linecap="round">
+    <!-- The vertical stem -->
+    <line x1="24" y1="15" x2="24" y2="85" />
+    
+    <!-- The top loop -->
+    <path d="M 44,15 C 80,15 80,40 44,40" />
+    
+    <!-- The bottom loop (slightly wider) -->
+    <path d="M 44,60 C 92,60 92,85 44,85" />
   </g>
 </svg>
