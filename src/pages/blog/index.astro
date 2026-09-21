@@ -60,20 +60,6 @@ const posts = (await getCollection('blog')).sort(
 				color: var(--text-muted);
 				font-size: 0.9em;
 			}
-			.tags {
-				display: flex;
-				gap: 0.5rem;
-				flex-wrap: wrap;
-				margin-bottom: 1rem;
-			}
-			.tag {
-				border: 1px solid var(--border-color);
-				border-radius: 9999px;
-				padding: 0.2rem 0.6rem;
-				font-size: 0.75rem;
-				color: var(--text-muted);
-				background: transparent;
-			}
 			.description {
 				margin: 0;
 				padding-left: 1rem;
@@ -112,11 +98,6 @@ const posts = (await getCollection('blog')).sort(
 								<div class="meta">
 									<FormattedDate date={post.data.pubDate} /> &middot; {readTime} min
 								</div>
-								{post.data.tags && post.data.tags.length > 0 && (
-									<div class="tags">
-										{post.data.tags.map(tag => <span class="tag">{tag}</span>)}
-									</div>
-								)}
 								{post.data.description && (
 									<div class="description">
 										{post.data.description}
