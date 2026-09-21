@@ -1,31 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <!-- Filled Regions -->
-  <g>
-    <!-- Top-Left Outer (Brand Orange) -->
-    <path d="M 50 10 L 50 30 A 20 20 0 0 0 30 50 L 10 50 Z" fill="#ea580c" />
+  <!-- Solid Orange Base Diamond -->
+  <!-- We use a solid base to prevent any microscopic gaps between shapes -->
+  <polygon points="50,10 90,50 50,90 10,50" fill="#ea580c" />
+  
+  <!-- The Black Shapes drawn precisely on top to create the alternating geometry -->
+  <g fill="#1a1815">
+    <!-- Top-Left Inner Circle Cut -->
+    <path d="M 50 50 L 50 30 A 20 20 0 0 0 30 50 Z" />
     
-    <!-- Bottom-Right Outer (Brand Orange) -->
-    <path d="M 50 90 L 50 70 A 20 20 0 0 0 70 50 L 90 50 Z" fill="#ea580c" />
+    <!-- Top-Right Outer Chevron -->
+    <path d="M 50 10 L 90 50 L 70 50 A 20 20 0 0 0 50 30 Z" />
     
-    <!-- Top-Right Inner Quarter-Circle (Cyan Pop) -->
-    <path d="M 50 50 L 50 30 A 20 20 0 0 1 70 50 Z" fill="#0891b2" />
+    <!-- Bottom-Right Inner Circle Cut -->
+    <path d="M 50 50 L 70 50 A 20 20 0 0 1 50 70 Z" />
     
-    <!-- Bottom-Left Inner Quarter-Circle (Golden Yellow) -->
-    <path d="M 50 50 L 30 50 A 20 20 0 0 0 50 70 Z" fill="#f59e0b" />
-  </g>
-
-  <!-- Thick Charcoal Structural Outlines -->
-  <g fill="none" stroke="#1a1815" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
-    <!-- Outer Diamond Frame -->
-    <polygon points="50,10 90,50 50,90 10,50" />
-    
-    <!-- Inner Circle Frame -->
-    <circle cx="50" cy="50" r="20" />
-    
-    <!-- Vertical Crosshair -->
-    <line x1="50" y1="10" x2="50" y2="90" />
-    
-    <!-- Horizontal Crosshair -->
-    <line x1="10" y1="50" x2="90" y2="50" />
+    <!-- Bottom-Left Outer Chevron -->
+    <path d="M 50 90 L 10 50 L 30 50 A 20 20 0 0 0 50 70 Z" />
   </g>
 </svg>
