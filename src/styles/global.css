@@ -172,25 +172,25 @@ nav {
 	display: flex;
 	align-items: flex-start;
 	gap: 1rem;
-	margin-bottom: 1rem;
-	padding: 1rem;
-	background: var(--bg-surface);
-	border: 1px solid var(--border-color);
-	border-radius: 4px; /* Sharper corners for editorial look */
-	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+	margin-bottom: 0.5rem;
+	padding: 0.75rem 0;
+	border-bottom: 1px dashed var(--border-color);
+	transition: all 0.3s ease;
+}
+
+.retro-list-item:last-child {
+	border-bottom: none;
 }
 
 .retro-list-item:hover {
-	border-color: var(--accent);
-	box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+	border-bottom-color: var(--accent);
 }
 
 .retro-list-item .symbol {
 	color: var(--accent);
 	font-family: var(--font-sans);
-	font-size: 1.2rem;
-	margin-top: -0.1rem; /* align with serif text */
+	font-size: 0.85rem;
+	margin-top: 0.25rem; /* align with serif text */
 }
 
 .retro-list-item a {
