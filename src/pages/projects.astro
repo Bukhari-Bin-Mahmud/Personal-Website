@@ -1,0 +1,35 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import ListItem from '../components/ListItem.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Projects | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Projects</h1>
+			<p>
+				A selection of things I've built.
+			</p>
+
+			<h2>Active</h2>
+			<ul>
+				<ListItem href="#" title="Agentic Coding Workflows — Automating 90% of PR review" symbol="★" />
+				<ListItem href="#" title="Minimal Retro Theme — Astro theme for personal blogs" symbol="★" />
+			</ul>
+
+			<h2>Archived</h2>
+			<ul>
+				<ListItem href="#" title="Legacy Knowledge Graph — Discontinued experiment" symbol="◇" />
+			</ul>
+		</main>
+		<Footer />
+	</body>
+</html>

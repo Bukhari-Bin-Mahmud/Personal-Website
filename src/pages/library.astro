@@ -1,0 +1,38 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import ListItem from '../components/ListItem.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Library | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Library</h1>
+			<p>
+				Books, articles, and papers that have shaped my thinking.
+			</p>
+
+			<h2>Currently Reading</h2>
+			<ul>
+				<ListItem href="#" title="The Art of Doing Science and Engineering — Hamming on research taste" symbol="◇" />
+				<ListItem href="#" title="Designing Data-Intensive Applications — Systems architecture patterns" symbol="◇" />
+				<ListItem href="#" title="Shape Up — Basecamp's product methodology" symbol="◇" />
+			</ul>
+
+			<h2>Hall of Fame</h2>
+			<ul>
+				<ListItem href="#" title="The Inner Game of Tennis — Mental game for skill acquisition" symbol="★" />
+				<ListItem href="#" title="Working in Public — Open source maintainer dynamics" symbol="★" />
+				<ListItem href="#" title="Thinking in Systems — Meadows on leverage points" symbol="★" />
+			</ul>
+		</main>
+		<Footer />
+	</body>
+</html>

@@ -1,0 +1,136 @@
+---
+---
+
+<div class="scouts-container" aria-hidden="true">
+  <!-- Scout 1 -->
+  <div class="scout scout-1">
+    <svg viewBox="0 0 100 100" class="scout-svg" overflow="visible">
+      <!-- Gas cloud trail -->
+      <g class="gas-clouds" fill="var(--text-muted)" opacity="0.15">
+        <circle cx="-15" cy="55" r="16" filter="blur(2px)"/>
+        <circle cx="-35" cy="65" r="22" filter="blur(3px)"/>
+        <circle cx="-60" cy="72" r="18" filter="blur(4px)"/>
+        <circle cx="-85" cy="78" r="12" filter="blur(4px)"/>
+      </g>
+      <!-- Wire -->
+      <path d="M 50 50 Q 70 10 150 -50" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+      <!-- Outline Scout (Dynamic Pose) -->
+      <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <!-- Head -->
+        <circle cx="50" cy="40" r="5" fill="currentColor"/>
+        <!-- Torso -->
+        <line x1="50" y1="45" x2="45" y2="65" />
+        <!-- Bent Leg -->
+        <line x1="45" y1="65" x2="30" y2="70" /> 
+        <line x1="30" y1="70" x2="25" y2="85" />
+        <!-- Straight Leg -->
+        <line x1="45" y1="65" x2="65" y2="75" /> 
+        <!-- Arm & Sword 1 -->
+        <line x1="50" y1="48" x2="68" y2="42" /> 
+        <line x1="68" y1="42" x2="90" y2="30" stroke="var(--accent)" stroke-width="1.5"/>
+        <!-- Arm & Sword 2 -->
+        <line x1="50" y1="48" x2="35" y2="52" />
+        <line x1="35" y1="52" x2="15" y2="38" stroke="var(--accent)" stroke-width="1.5"/>
+        <!-- Cape Outline -->
+        <path d="M 48 48 Q 20 40 10 60 Q 30 75 42 63" fill="currentColor" opacity="0.1" stroke="none"/>
+      </g>
+    </svg>
+  </div>
+  
+  <!-- Scout 2 -->
+  <div class="scout scout-2">
+    <svg viewBox="0 0 100 100" class="scout-svg" overflow="visible">
+      <!-- Gas cloud trail -->
+      <g class="gas-clouds" fill="var(--text-muted)" opacity="0.15">
+        <circle cx="-10" cy="65" r="15" filter="blur(2px)"/>
+        <circle cx="-30" cy="75" r="20" filter="blur(3px)"/>
+        <circle cx="-55" cy="85" r="15" filter="blur(4px)"/>
+        <circle cx="-75" cy="95" r="10" filter="blur(4px)"/>
+      </g>
+      <!-- Wire -->
+      <path d="M 50 50 Q 80 0 100 -80" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+      <!-- Outline Scout (Diving Pose) -->
+      <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <!-- Head -->
+        <circle cx="55" cy="35" r="5" fill="currentColor"/>
+        <!-- Torso -->
+        <line x1="55" y1="40" x2="45" y2="60" />
+        <!-- Legs -->
+        <line x1="45" y1="60" x2="35" y2="80" /> 
+        <line x1="45" y1="60" x2="55" y2="80" /> 
+        <!-- Arm & Sword 1 -->
+        <line x1="52" y1="45" x2="75" y2="45" /> 
+        <line x1="75" y1="45" x2="105" y2="40" stroke="var(--accent)" stroke-width="1.5"/>
+        <!-- Arm & Sword 2 -->
+        <line x1="52" y1="45" x2="30" y2="40" />
+        <line x1="30" y1="40" x2="10" y2="20" stroke="var(--accent)" stroke-width="1.5"/>
+        <!-- Cape Outline -->
+        <path d="M 50 42 Q 25 35 15 55 Q 35 70 42 58" fill="currentColor" opacity="0.1" stroke="none"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<style>
+  .scouts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  .scout {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    color: var(--text-muted);
+    opacity: 0;
+  }
+
+  .scout-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Scout 1: Slower, messy flight path from top-left to bottom-right */
+  .scout-1 {
+    top: 0;
+    left: 0;
+    animation: flight-1 45s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  @keyframes flight-1 {
+    0% { transform: translate(-20vw, -10vh) rotate(25deg); opacity: 0; }
+    5% { opacity: 0.25; }
+    15% { transform: translate(25vw, 35vh) rotate(-10deg); } /* Swoop down */
+    30% { transform: translate(40vw, 15vh) rotate(35deg); } /* Jerk upwards */
+    45% { transform: translate(65vw, 55vh) rotate(-15deg); } /* Deep swoop down */
+    60% { transform: translate(80vw, 25vh) rotate(20deg); opacity: 0.25; } /* Jerk up again */
+    75% { opacity: 0; }
+    100% { transform: translate(130vw, 60vh); opacity: 0; }
+  }
+
+  /* Scout 2: Flipping and swinging erratically from bottom-right to top-left */
+  .scout-2 {
+    bottom: 0;
+    right: 0;
+    animation: flight-2 55s ease-in-out infinite;
+    animation-delay: 12s;
+  }
+
+  @keyframes flight-2 {
+    0% { transform: translate(20vw, 20vh) scaleX(-1) rotate(-30deg); opacity: 0; }
+    5% { opacity: 0.2; }
+    20% { transform: translate(-20vw, -40vh) scaleX(-1) rotate(15deg); } /* Swoop up */
+    35% { transform: translate(-45vw, -20vh) scaleX(-1) rotate(-20deg); } /* Dip down */
+    50% { transform: translate(-70vw, -60vh) scaleX(-1) rotate(25deg); } /* Swoop high */
+    65% { transform: translate(-90vw, -40vh) scaleX(-1) rotate(-15deg); opacity: 0.2; } /* Dip */
+    80% { opacity: 0; }
+    100% { transform: translate(-140vw, -80vh) scaleX(-1); opacity: 0; }
+  }
+</style>

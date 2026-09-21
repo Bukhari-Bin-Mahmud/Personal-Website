@@ -1,0 +1,246 @@
+:root {
+	/* Dark Editorial Palette (Default) */
+	--bg-color: #1e1610;       
+	--bg-surface: #2a2018;     
+	--text-main: #fdf4ec;      /* Lighter, brighter cream to pop more */
+	--text-muted: #d8c4b2;     /* Lighter tan */
+	--accent: #ea580c;         
+	--accent-glow: rgba(234, 88, 12, 0.2);
+	--border-color: #3f3126;   
+	--header-bg: rgba(30, 22, 16, 0.85);
+	
+	--font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	--font-serif: 'EB Garamond', Georgia, serif;
+}
+
+:root[data-theme="light"] {
+	/* Light Orange & Cream Retro Palette */
+	--bg-color: #fdfbf7;       
+	--bg-surface: #ffffff;     
+	--text-main: #1a1815;      /* Darker charcoal, closer to black for more contrast */
+	--text-muted: #57534e;     /* Darker grey-brown */
+	--accent: #ea580c;         
+	--accent-glow: rgba(234, 88, 12, 0.2);
+	--border-color: #e7e5e4;   
+	--header-bg: rgba(253, 251, 247, 0.85);
+}
+
+body {
+	font-family: var(--font-serif);
+	margin: 0;
+	padding: 0;
+	background-color: var(--bg-color);
+	color: var(--text-main);
+	font-size: 19px; /* The perfect middle ground */
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+}
+
+main {
+	width: 800px;
+	max-width: 90%;
+	margin: 0 auto;
+	padding: 6rem 1rem 3rem 1rem;
+	position: relative;
+	z-index: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-sans);
+	margin: 2.5rem 0 1rem 0;
+	font-weight: 900;
+	line-height: 1.2;
+	letter-spacing: -0.02em;
+	color: var(--text-main);
+}
+
+h1 { 
+	font-size: 3.5rem; 
+	margin-top: 0; 
+}
+
+h2 { 
+	font-size: 0.85rem; 
+	font-weight: 900;
+	text-transform: uppercase;
+	color: var(--accent);
+	letter-spacing: 0.05em;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+/* Subtitle styling for specific text like "Generalist" (using h1 in index.astro, we can apply a class if needed, or just let it inherit) */
+.subtitle-text {
+	font-family: var(--font-sans);
+	font-size: 0.85rem;
+	font-weight: 900;
+	text-transform: uppercase;
+	color: var(--accent);
+	letter-spacing: 0.05em;
+}
+
+p {
+	margin-bottom: 1.5rem;
+	color: var(--text-muted);
+}
+
+a {
+	color: var(--text-main);
+	text-decoration: none;
+	transition: color 0.3s ease;
+	border-bottom: 1px solid var(--accent-glow);
+}
+
+a:hover {
+	color: var(--accent);
+	border-bottom-color: var(--accent);
+}
+
+ul {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid var(--border-color);
+	margin: 3rem 0;
+}
+
+/* Glassmorphism Header */
+header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+	background: var(--header-bg);
+	backdrop-filter: blur(12px);
+	border-bottom: 1px solid var(--border-color);
+	padding: 1rem 0;
+	transition: all 0.3s ease;
+}
+
+nav {
+	width: 800px;
+	max-width: 90%;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.internal-links {
+	display: flex;
+	gap: 2rem;
+}
+
+.internal-links a {
+	font-family: var(--font-sans);
+	font-size: 0.85rem;
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	padding: 0.5rem 0;
+	position: relative;
+	color: var(--text-main);
+	border-bottom: none;
+}
+
+.internal-links a::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0%;
+	height: 2px;
+	background-color: var(--accent);
+	transition: width 0.3s ease;
+}
+
+.internal-links a:hover::after,
+.internal-links a.active::after {
+	width: 100%;
+}
+
+.internal-links a:hover {
+	color: var(--accent);
+}
+
+/* Retro Premium List Items */
+.retro-list-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 1rem;
+	margin-bottom: 1rem;
+	padding: 1rem;
+	background: var(--bg-surface);
+	border: 1px solid var(--border-color);
+	border-radius: 4px; /* Sharper corners for editorial look */
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.retro-list-item:hover {
+	transform: translateX(5px) translateY(-2px);
+	border-color: var(--accent);
+	box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.retro-list-item .symbol {
+	color: var(--accent);
+	font-family: var(--font-sans);
+	font-size: 1.2rem;
+	margin-top: -0.1rem; /* align with serif text */
+}
+
+.retro-list-item a {
+	font-family: var(--font-serif);
+	font-size: 1.1rem;
+	color: var(--text-main);
+	border-bottom: none;
+	flex-grow: 1;
+}
+
+.retro-list-item:hover a {
+	color: var(--accent);
+}
+
+/* Footer */
+footer {
+	margin-top: 4rem;
+	padding: 2rem 0;
+	border-top: 1px solid var(--border-color);
+	font-family: var(--font-sans);
+	font-weight: 500;
+	font-size: 0.85rem;
+	color: var(--text-muted);
+}
+.footer-content {
+	width: 800px;
+	max-width: 90%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.footer-links {
+	display: flex;
+	gap: 1.5rem;
+}
+
+.footer-links a {
+	border-bottom: none;
+}
+
+@media (max-width: 600px) {
+	.internal-links {
+		gap: 1rem;
+	}
+	.internal-links a {
+		font-size: 0.75rem;
+	}
+	h1 {
+		font-size: 2.5rem;
+	}
+}
