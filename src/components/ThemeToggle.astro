@@ -1,48 +1,81 @@
-<div class="theme-select-wrapper">
-  <select id="theme-select" aria-label="Theme preference">
-    <option value="system">System Theme</option>
-    <option value="light">Light Mode</option>
-    <option value="dark">Dark Mode</option>
-  </select>
+<div class="theme-toggle-group" role="radiogroup" aria-label="Theme preference">
+  <button data-theme-btn="light" aria-label="Light theme" title="Light theme">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+  </button>
+  <button data-theme-btn="system" aria-label="System theme" title="System theme">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+  </button>
+  <button data-theme-btn="dark" aria-label="Dark theme" title="Dark theme">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 6 6 0 0 1 0 12Z"/><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+  </button>
 </div>
 
 <style>
-	.theme-select-wrapper select {
-		background: var(--bg-main);
-		color: var(--text-main);
+	.theme-toggle-group {
+		display: flex;
+		align-items: center;
+		background: var(--bg-surface);
 		border: 1px solid var(--border-color);
-		padding: 0.4rem 0.5rem;
-		border-radius: 4px;
-		cursor: pointer;
-		font-family: inherit;
-		font-size: 0.85rem;
-		transition: border-color 0.3s, color 0.3s;
+		border-radius: 20px;
+		padding: 2px;
+		gap: 2px;
 	}
-	.theme-select-wrapper select:hover,
-	.theme-select-wrapper select:focus {
-		border-color: var(--accent);
+	.theme-toggle-group button {
+		background: transparent;
+		border: none;
+		color: var(--text-muted);
+		cursor: pointer;
+		padding: 0.35rem 0.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 18px;
+		transition: all 0.2s ease;
+	}
+	.theme-toggle-group button:hover {
+		color: var(--text-main);
+	}
+	.theme-toggle-group button.active {
+		background: var(--bg-color);
 		color: var(--accent);
-		outline: none;
+		box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+	}
+	:global([data-theme="dark"]) .theme-toggle-group button.active {
+		box-shadow: 0 1px 3px rgba(0,0,0,0.4);
 	}
 </style>
 
 <script is:inline>
-	const themeSelect = document.getElementById('theme-select');
-	
-	if (themeSelect) {
-		const storedTheme = localStorage.getItem('theme') || 'system';
-		themeSelect.value = storedTheme;
+	(function() {
+		const buttons = document.querySelectorAll('[data-theme-btn]');
+		
+		function updateActiveButton(theme) {
+			buttons.forEach(btn => {
+				if (btn.getAttribute('data-theme-btn') === theme) {
+					btn.classList.add('active');
+				} else {
+					btn.classList.remove('active');
+				}
+			});
+		}
 
-		themeSelect.addEventListener('change', (e) => {
-			const value = e.target.value;
-			if (value === 'system') {
-				localStorage.setItem('theme', 'system');
-				const isLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-				document.documentElement.setAttribute('data-theme', isLight ? 'light' : 'dark');
-			} else {
-				localStorage.setItem('theme', value);
-				document.documentElement.setAttribute('data-theme', value);
-			}
+		const storedTheme = localStorage.getItem('theme') || 'system';
+		updateActiveButton(storedTheme);
+
+		buttons.forEach(btn => {
+			btn.addEventListener('click', () => {
+				const value = btn.getAttribute('data-theme-btn');
+				updateActiveButton(value);
+				
+				if (value === 'system') {
+					localStorage.setItem('theme', 'system');
+					const isLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+					document.documentElement.setAttribute('data-theme', isLight ? 'light' : 'dark');
+				} else {
+					localStorage.setItem('theme', value);
+					document.documentElement.setAttribute('data-theme', value);
+				}
+			});
 		});
-	}
+	})();
 </script>
