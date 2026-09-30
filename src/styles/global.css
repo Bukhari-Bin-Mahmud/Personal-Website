@@ -193,6 +193,12 @@ nav {
 	padding-bottom: 1.5rem; /* Give the underline some breathing room below the description */
 }
 
+.retro-list-item .list-item-content.has-underline {
+	display: flex;
+	padding-bottom: 1.5rem;
+	border-bottom: 1px solid var(--accent-glow);
+}
+
 .retro-list-item .title-text {
 	font-family: var(--font-serif);
 	font-size: 1.35rem;

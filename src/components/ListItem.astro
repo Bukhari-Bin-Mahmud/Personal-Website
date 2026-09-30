@@ -4,9 +4,10 @@ interface Props {
 	title: string;
 	description?: string;
 	accent?: boolean;
+	underline?: boolean;
 }
 
-const { href, title, description, accent = false } = Astro.props;
+const { href, title, description, accent = false, underline = false } = Astro.props;
 ---
 
 <li class={`retro-list-item ${accent ? 'accent-line' : ''}`}>
@@ -16,7 +17,7 @@ const { href, title, description, accent = false } = Astro.props;
 			{description && <div class="desc-text">{description}</div>}
 		</a>
 	) : (
-		<div class="list-item-content">
+		<div class={`list-item-content ${underline ? 'has-underline' : ''}`}>
 			<span class="title-text">{title}</span>
 			{description && <div class="desc-text">{description}</div>}
 		</div>
