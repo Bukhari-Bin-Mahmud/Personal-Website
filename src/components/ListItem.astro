@@ -1,13 +1,21 @@
 ---
 interface Props {
-	href: string;
+	href?: string;
 	title: string;
+	description?: string;
 	accent?: boolean;
 }
 
-const { href, title, accent = false } = Astro.props;
+const { href, title, description, accent = false } = Astro.props;
 ---
 
 <li class={`retro-list-item ${accent ? 'accent-line' : ''}`}>
-	<a href={href}>{title}</a>
+	<div class="list-item-content">
+		{href ? (
+			<a href={href} class="title-text">{title}</a>
+		) : (
+			<span class="title-text">{title}</span>
+		)}
+		{description && <div class="desc-text">{description}</div>}
+	</div>
 </li>
