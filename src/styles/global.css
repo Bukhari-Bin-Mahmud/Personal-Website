@@ -97,6 +97,16 @@ a:hover {
 	border-bottom-color: var(--accent);
 }
 
+a.see-more-link {
+	font-size: 0.9em;
+	color: #555;
+	transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+a.see-more-link:hover {
+	color: var(--accent);
+}
+
 ul {
 	list-style-type: none;
 	padding-left: 0;
