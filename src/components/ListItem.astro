@@ -10,12 +10,15 @@ const { href, title, description, accent = false } = Astro.props;
 ---
 
 <li class={`retro-list-item ${accent ? 'accent-line' : ''}`}>
-	<div class="list-item-content">
-		{href ? (
-			<a href={href} class="title-text">{title}</a>
-		) : (
+	{href ? (
+		<a href={href} class="list-item-content is-link">
 			<span class="title-text">{title}</span>
-		)}
-		{description && <div class="desc-text">{description}</div>}
-	</div>
+			{description && <div class="desc-text">{description}</div>}
+		</a>
+	) : (
+		<div class="list-item-content">
+			<span class="title-text">{title}</span>
+			{description && <div class="desc-text">{description}</div>}
+		</div>
+	)}
 </li>
