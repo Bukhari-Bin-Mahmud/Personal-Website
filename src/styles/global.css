@@ -189,9 +189,7 @@ nav {
 	flex-grow: 1;
 }
 
-.retro-list-item:hover {
-	transform: translateX(5px);
-}
+
 
 .retro-list-item:hover a {
 	color: var(--accent);
