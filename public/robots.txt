@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot-Image
+Allow: /favicon.svg
+
 Sitemap: https://bukharibinmahmud.me/sitemap-index.xml
