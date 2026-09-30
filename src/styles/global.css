@@ -170,35 +170,23 @@ nav {
 /* Retro Premium List Items */
 .retro-list-item {
 	display: flex;
-	align-items: flex-start;
-	gap: 1rem;
-	margin-bottom: 0.5rem;
-	padding: 0.75rem 0;
-	border-bottom: 1px dashed var(--border-color);
-	transition: all 0.3s ease;
-}
-
-.retro-list-item:last-child {
-	border-bottom: none;
-}
-
-.retro-list-item:hover {
-	border-bottom-color: var(--accent);
-}
-
-.retro-list-item .symbol {
-	color: var(--accent);
-	font-family: var(--font-sans);
-	font-size: 0.85rem;
-	margin-top: 0.25rem; /* align with serif text */
+	align-items: center;
+	margin-bottom: 1rem;
+	padding: 0.25rem 0 0.25rem 1rem;
+	border-left: 2px solid var(--accent);
+	transition: transform 0.2s ease;
 }
 
 .retro-list-item a {
 	font-family: var(--font-serif);
-	font-size: 1.1rem;
+	font-size: 1.15rem;
 	color: var(--text-main);
 	border-bottom: none;
 	flex-grow: 1;
+}
+
+.retro-list-item:hover {
+	transform: translateX(5px);
 }
 
 .retro-list-item:hover a {

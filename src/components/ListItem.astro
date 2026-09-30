@@ -2,13 +2,11 @@
 interface Props {
 	href: string;
 	title: string;
-	symbol?: string;
 }
 
-const { href, title, symbol = "◇" } = Astro.props;
+const { href, title } = Astro.props;
 ---
 
 <li class="retro-list-item">
-	<span class="symbol">{symbol}</span>
 	<a href={href}>{title}</a>
 </li>
