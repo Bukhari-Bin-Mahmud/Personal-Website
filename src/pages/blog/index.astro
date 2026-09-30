@@ -38,9 +38,11 @@ const posts = (await getCollection('blog')).sort(
 				margin-bottom: 0.5rem;
 				font-size: 1.1rem;
 			}
-			a {
+			a.post-link {
 				text-decoration: none;
 				display: block;
+				padding-bottom: 1.5rem; /* Pushes the underline nicely below the description */
+				transition: border-color 0.2s ease;
 			}
 			.title {
 				font-family: 'Inter', sans-serif;
@@ -89,17 +91,17 @@ const posts = (await getCollection('blog')).sort(
 						posts.map((post) => {
 							return (
 							<li>
-								<div class="meta">
-									<FormattedDate date={post.data.pubDate} />
-								</div>
-								<a href={`/blog/${post.id}/`}>
-									<h3 class="title">{post.data.title}</h3>
-								</a>
-								{post.data.description && (
-									<div class="description">
-										{post.data.description}
+								<a href={`/blog/${post.id}/`} class="post-link">
+									<div class="meta">
+										<FormattedDate date={post.data.pubDate} />
 									</div>
-								)}
+									<h3 class="title">{post.data.title}</h3>
+									{post.data.description && (
+										<div class="description">
+											{post.data.description}
+										</div>
+									)}
+								</a>
 							</li>
 						)})
 					}
