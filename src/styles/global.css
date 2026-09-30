@@ -200,11 +200,12 @@ nav {
 }
 
 .retro-list-item .desc-text {
-	font-family: var(--font-sans);
-	font-size: 0.9rem;
+	margin-top: 0.5rem;
+	padding-left: 1rem;
+	border-left: 2px solid var(--border-color);
 	color: var(--text-muted);
-	margin-top: 0.3rem;
-	line-height: 1.5;
+	font-size: 0.95rem;
+	line-height: 1.6;
 }
 
 /* Footer */
