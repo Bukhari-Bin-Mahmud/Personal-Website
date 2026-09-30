@@ -2,11 +2,12 @@
 interface Props {
 	href: string;
 	title: string;
+	accent?: boolean;
 }
 
-const { href, title } = Astro.props;
+const { href, title, accent = false } = Astro.props;
 ---
 
-<li class="retro-list-item">
+<li class={`retro-list-item ${accent ? 'accent-line' : ''}`}>
 	<a href={href}>{title}</a>
 </li>
