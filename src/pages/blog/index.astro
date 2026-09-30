@@ -56,9 +56,11 @@ const posts = (await getCollection('blog')).sort(
 				color: var(--accent);
 			}
 			.meta {
-				margin: 0 0 1rem 0;
+				margin: 0 0 0.25rem 0;
 				color: var(--text-muted);
-				font-size: 0.9em;
+				font-family: var(--font-sans);
+				font-size: 0.85rem;
+				font-weight: 500;
 			}
 			.description {
 				margin: 0;
@@ -86,18 +88,14 @@ const posts = (await getCollection('blog')).sort(
 				<ul>
 					{
 						posts.map((post) => {
-							const wordCount = post.body ? post.body.split(/\s+/).length : 0;
-							const readTime = Math.max(1, Math.ceil(wordCount / 200));
-
 							return (
 							<li>
-								<span class="arrow">&#10230;</span>
+								<div class="meta">
+									<FormattedDate date={post.data.pubDate} />
+								</div>
 								<a href={`/blog/${post.id}/`}>
 									<h3 class="title">{post.data.title}</h3>
 								</a>
-								<div class="meta">
-									<FormattedDate date={post.data.pubDate} /> &middot; {readTime} min
-								</div>
 								{post.data.description && (
 									<div class="description">
 										{post.data.description}
