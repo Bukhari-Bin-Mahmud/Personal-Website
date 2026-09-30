@@ -190,6 +190,7 @@ nav {
 .retro-list-item .list-item-content.is-link {
 	text-decoration: none;
 	display: flex;
+	padding-bottom: 1.5rem; /* Give the underline some breathing room below the description */
 }
 
 .retro-list-item .title-text {
@@ -201,13 +202,8 @@ nav {
 	transition: color 0.2s ease;
 }
 
-.retro-list-item .list-item-content.is-link:hover .title-text,
-.retro-list-item .list-item-content.is-link:hover .desc-text {
+.retro-list-item .list-item-content.is-link:hover .title-text {
 	color: var(--accent);
-}
-
-.retro-list-item .list-item-content.is-link:hover .desc-text {
-	border-left-color: var(--accent);
 }
 
 .retro-list-item .desc-text {
