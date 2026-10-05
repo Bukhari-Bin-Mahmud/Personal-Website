@@ -83,6 +83,7 @@ h2 {
 p {
 	margin-bottom: 1.5rem;
 	color: var(--text-main);
+	font-weight: 500;
 }
 
 a {
