@@ -212,7 +212,7 @@ nav {
 .retro-list-item .title-text {
 	font-family: 'Lora', var(--font-serif);
 	font-weight: 500;
-	font-size: 1.35rem;
+	font-size: 1.255rem;
 	color: var(--text-main);
 	border-bottom: none;
 	line-height: 1.3;
