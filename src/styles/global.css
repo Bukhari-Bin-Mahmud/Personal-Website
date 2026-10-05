@@ -100,7 +100,8 @@ a:hover {
 a.see-more-link {
 	font-size: 0.9em;
 	color: #555;
-	transition: color 0.2s ease, border-bottom-color 0.2s ease;
+	border-bottom: none;
+	transition: color 0.2s ease;
 }
 
 a.see-more-link:hover {
