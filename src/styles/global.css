@@ -210,7 +210,8 @@ nav {
 }
 
 .retro-list-item .title-text {
-	font-family: var(--font-serif);
+	font-family: 'Lora', var(--font-serif);
+	font-weight: 500;
 	font-size: 1.35rem;
 	color: var(--text-main);
 	border-bottom: none;
