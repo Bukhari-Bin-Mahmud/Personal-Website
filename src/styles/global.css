@@ -232,7 +232,7 @@ nav {
 	border-left: 2px solid var(--border-color);
 	color: var(--text-muted);
 	font-family: var(--font-serif);
-	font-size: 1rem;
+	font-size: 1.15rem;
 	line-height: 1.6;
 	transition: color 0.2s ease, border-left-color 0.2s ease;
 }
