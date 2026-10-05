@@ -11,6 +11,7 @@
 	
 	--font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 	--font-serif: 'EB Garamond', Georgia, serif;
+	--font-geist: 'Geist', sans-serif;
 }
 
 :root[data-theme="light"] {
@@ -26,7 +27,7 @@
 }
 
 body {
-	font-family: var(--font-serif);
+	font-family: var(--font-geist);
 	margin: 0;
 	padding: 0;
 	background-color: var(--bg-color);
@@ -232,7 +233,8 @@ nav {
 	padding-left: 1rem;
 	border-left: 2px solid var(--border-color);
 	color: var(--text-muted);
-	font-family: var(--font-serif);
+	font-family: var(--font-geist);
+	font-style: italic;
 	font-size: 1.2rem;
 	line-height: 1.6;
 	transition: color 0.2s ease, border-left-color 0.2s ease;
