@@ -231,9 +231,8 @@ nav {
 	padding-left: 1rem;
 	border-left: 2px solid var(--border-color);
 	color: var(--text-muted);
-	font-family: Georgia, serif;
-	font-style: italic;
-	font-size: 0.99rem;
+	font-family: var(--font-serif);
+	font-size: 1rem;
 	line-height: 1.6;
 	transition: color 0.2s ease, border-left-color 0.2s ease;
 }
