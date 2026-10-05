@@ -214,13 +214,15 @@ nav {
 	font-weight: 600;
 	font-size: 1.2rem;
 	color: var(--text-main);
+	opacity: 0.85;
 	border-bottom: none;
 	line-height: 1.3;
-	transition: color 0.2s ease;
+	transition: color 0.2s ease, opacity 0.2s ease;
 }
 
 .retro-list-item .list-item-content.is-link:hover .title-text {
 	color: var(--accent);
+	opacity: 1;
 }
 
 .retro-list-item .desc-text {
